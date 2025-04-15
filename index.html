@@ -1,4 +1,6 @@
 
+# Create the full updated portfolio HTML including embedded Letter of Recommendation
+full_portfolio_html = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +15,7 @@
         .project { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; background: #fafafa; }
         footer { text-align: center; padding: 20px; font-size: 14px; background: #003366; color: white; margin-top: 20px; }
         a { color: #003366; text-decoration: none; }
+        iframe { width: 100%; height: 600px; border: none; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -48,7 +51,6 @@
         <h3>Adidas Sales Dashboard</h3>
         <p>Built Tableau dashboards to visualize regional and product line performance. Identified trends and strategic recommendations.</p>
     </div>
-    <!-- Add more projects here -->
 </section>
 
 <section>
@@ -58,6 +60,12 @@
         <li>Berakah Campus Ministries – Vice President</li>
         <li>Organized club events, led outreach campaigns, supported student learning across 300+ peers</li>
     </ul>
+</section>
+
+<section>
+    <h2>Letter of Recommendation</h2>
+    <p>This recommendation letter was written by my professor, <strong>Dr. Pathak Jogen</strong>, highlighting my teaching and leadership abilities. View it below:</p>
+    <iframe src="Letter_of_Recommendation_for_Prakash_Teki.pdf"></iframe>
 </section>
 
 <section>
@@ -73,3 +81,12 @@
 
 </body>
 </html>
+"""
+
+# Save the updated portfolio HTML with embedded LOR
+portfolio_with_lor_path = "/mnt/data/index.html"
+with open(portfolio_with_lor_path, "w") as f:
+    f.write(full_portfolio_html)
+
+portfolio_with_lor_path
+
