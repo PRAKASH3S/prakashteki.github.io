@@ -3,82 +3,655 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prakash Teki | Portfolio</title>
+    <title>Prakash Teki - Data Analyst Portfolio</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; color: #333; }
-        header { background: #003366; color: #fff; padding: 20px; text-align: center; }
-        section { padding: 40px 20px; max-width: 1000px; margin: auto; background: #fff; margin-top: 20px; }
-        h1, h2 { color: #003366; }
-        .project { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; background: #fafafa; }
-        footer { text-align: center; padding: 20px; font-size: 14px; background: #003366; color: white; margin-top: 20px; }
-        a { color: #003366; text-decoration: none; }
-        .resume-button {
-            display:inline-block; padding:10px 20px; background:#003366; color:#fff; 
-            border-radius:5px; font-weight:bold; margin-top: 20px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: #003366;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #66b3ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: white;
+            color: #003366;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 0 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #003366;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: #f8f9fa;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            padding: 0.3rem 0;
+            color: #666;
+        }
+
+        .skill-card li:before {
+            content: "▹ ";
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .experience-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #003366;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .experience-item h3 {
+            color: #003366;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .role {
+            color: #0066cc;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item .date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            color: #555;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: #f8f9fa;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #003366;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: #e8f4f8;
+            color: #003366;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Leadership Section */
+        #leadership {
+            background: white;
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .leadership-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .leadership-card h3 {
+            color: #003366;
+            margin-bottom: 0.5rem;
+        }
+
+        .leadership-card .position {
+            color: #0066cc;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .leadership-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Certifications Section */
+        #certifications {
+            background: #f8f9fa;
+        }
+
+        .cert-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cert-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cert-icon {
+            font-size: 2rem;
+            color: #003366;
+        }
+
+        .cert-info h4 {
+            color: #003366;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-info p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #003366;
+            color: white;
+        }
+
+        #contact h2 {
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: #66b3ff;
+        }
+
+        /* Footer */
+        footer {
+            background: #001a33;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <h1>Prakash Teki</h1>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<header>
-    <h1>Prakash Teki</h1>
-    <p>Business Analytics Graduate | Data Enthusiast | Teaching Assistant | Club Leader</p>
-</header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Data Analyst & Analytics Engineer</h2>
+        <p>Transforming data into actionable insights through analytics, visualization, and engineering</p>
+        <a href="#projects" class="btn">View My Work</a>
+        <a href="https://prakash3s.github.io/prakashteki.github.io/Prakash_Teki_Resume.pdf" target="_blank" class="btn btn-secondary">Download Resume</a>
+    </section>
 
-<!-- Resume Button Section -->
-<section style="text-align:center;">
-    <a href="https://prakash3s.github.io/prakashteki.github.io/Prakash_Teki_Resume.pdf" target="_blank" class="resume-button">
-        📄 View My Resume
-    </a>
-</section>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I'm a Business Analytics graduate from the University of North Texas with 2+ years of experience as a Data Analyst at Accenture. I specialize in transforming complex data into strategic insights through SQL optimization, Power BI dashboards, and ETL pipeline development.</p>
+                <p>My passion lies in using data to solve real-world problems—from optimizing financial advisor workflows to analyzing healthcare logistics. I combine technical expertise with strong communication skills to deliver solutions that drive measurable business impact.</p>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>About Me</h2>
-    <p>I am currently pursuing a Master's in Business Analytics at the University of North Texas. With a background in database administration at Accenture, and teaching assistant experience at UNT, I bring technical expertise and leadership. I'm passionate about using data to tell stories, uncover insights, and drive meaningful decisions. My values are rooted in continuous learning, service, and making an impact through knowledge and empathy.</p>
-</section>
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3>Wisdom Index Advisors</h3>
+                    <div class="role">Data Analytics Engineer Intern</div>
+                    <div class="date">Aug 2025 – Dec 2025</div>
+                    <ul>
+                        <li>Designed and deployed a PostgreSQL cloud database with 37+ financial metrics, reducing advisor lookup time by 70%</li>
+                        <li>Developed 39 SQL queries to calculate key financial KPIs, reducing analysis time by 50%</li>
+                        <li>Built a full-stack dashboard with Next.js/React and Python Flask, integrating OpenAI GPT-4 for AI-powered summaries that reduced review time by 80%</li>
+                    </ul>
+                </div>
 
-<section>
-    <h2>Resume Highlights</h2>
-    <ul>
-        <li>Database Administrator – Accenture (2+ years)</li>
-        <li>Teaching Assistant – University of North Texas</li>
-        <li>Cybersecurity Club Communications Director</li>
-        <li>Skilled in SQL, Python, Tableau, Power BI, Excel</li>
-        <li>Certified in Tableau, Power BI, Oracle, and SQL</li>
-    </ul>
-</section>
+                <div class="experience-item">
+                    <h3>University of North Texas</h3>
+                    <div class="role">Data Analyst</div>
+                    <div class="date">Feb 2024 – Aug 2025</div>
+                    <ul>
+                        <li>Designed interactive Power BI dashboards analyzing 1M+ hospital records, uncovering that 2 states accounted for 60% of transplant operations</li>
+                        <li>Performed exploratory data analysis on kidney transplant trends using star schema modeling</li>
+                        <li>Engineered geospatial analysis using Python to map optimal airport-to-hospital routes for organ transportation</li>
+                    </ul>
+                </div>
 
-<section>
-    <h2>Projects</h2>
-    <div class="project">
-        <h3>Traffic Clearance Time Prediction</h3>
-        <p>Used Python and decision tree regression to predict accident clearance time in Denton. Visualized findings in Power BI dashboard.</p>
-    </div>
-    <div class="project">
-        <h3>Adidas Sales Dashboard</h3>
-        <p>Built Tableau dashboards to visualize regional and product line performance. Identified trends and strategic recommendations.</p>
-    </div>
-</section>
+                <div class="experience-item">
+                    <h3>Accenture</h3>
+                    <div class="role">Data Analyst</div>
+                    <div class="date">Nov 2021 – Dec 2023</div>
+                    <ul>
+                        <li>Optimized SQL query performance by 40% through indexing and schema restructuring for Oracle OLTP & OLAP databases</li>
+                        <li>Integrated ServiceNow configurations for real-time data ingestion, improving data freshness by 50%</li>
+                        <li>Built financial reporting dashboards reducing manual reporting time by 33%</li>
+                        <li>Developed ETL transformation scripts ensuring clean, validated data for BI dashboards</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Leadership & Campus Involvement</h2>
-    <ul>
-        <li>Cybersecurity Club – Communications Director</li>
-        <li>Berakah Campus Ministries – Vice President</li>
-        <li>Organized club events, led outreach campaigns, supported student learning across 300+ peers</li>
-    </ul>
-</section>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">🏢</div>
+                    <div class="project-content">
+                        <h3>E-commerce ETL Pipeline</h3>
+                        <p>Built a scalable ETL pipeline on Databricks using medallion architecture (Bronze → Silver → Gold) to transform 100K+ transactions through dimensional modeling across 6 data layers.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Databricks</span>
+                            <span class="tech-tag">PySpark</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Unity Catalog</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">📺</div>
+                    <div class="project-content">
+                        <h3>Netflix Content Analysis</h3>
+                        <p>Analyzed 8,000+ Netflix titles using PostgreSQL to solve 15 business problems including content distribution trends, genre analysis, and performance patterns.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">CTEs</span>
+                            <span class="tech-tag">Window Functions</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">👥</div>
+                    <div class="project-content">
+                        <h3>Employee Lifecycle Analytics</h3>
+                        <p>Built an end-to-end HR analytics dashboard analyzing 1,500+ records to predict attrition risk, calculate employee LTV metrics, and track satisfaction KPIs.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">DAX</span>
+                            <span class="tech-tag">Churn Analysis</span>
+                            <span class="tech-tag">KPIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:tekiprakash1@gmail.com">tekiprakash1@gmail.com</a><br>
-       LinkedIn: <a href="https://linkedin.com/in/tekip" target="_blank">linkedin.com/in/tekip</a><br>
-       GitHub: <a href="https://github.com/PRAKASH3S" target="_blank">github.com/PRAKASH3S</a></p>
-</section>
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Data Analysis & Visualization</h3>
+                    <ul>
+                        <li>Power BI (DAX, Power Query)</li>
+                        <li>Tableau</li>
+                        <li>Excel (Pivot Tables, Macros)</li>
+                        <li>QuickSight</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Programming & Databases</h3>
+                    <ul>
+                        <li>SQL (PostgreSQL, MS SQL Server, Oracle)</li>
+                        <li>Python (pandas, numpy, scipy)</li>
+                        <li>R & SAS</li>
+                        <li>Snowflake</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>ETL & Data Engineering</h3>
+                    <ul>
+                        <li>Azure Data Factory</li>
+                        <li>Databricks & Spark</li>
+                        <li>DBT & SSIS</li>
+                        <li>Data Warehousing</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Cloud & Platforms</h3>
+                    <ul>
+                        <li>Microsoft Azure (ADLS, Blob Storage)</li>
+                        <li>AWS & GCP</li>
+                        <li>Power Platform (Power Apps, Power Automate)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Business Intelligence</h3>
+                    <ul>
+                        <li>KPI Development</li>
+                        <li>A/B Testing</li>
+                        <li>Customer Lifecycle Analytics</li>
+                        <li>Market Research</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    &copy; 2025 Prakash Teki | Built with HTML & CSS
-</footer>
+    <!-- Leadership Section -->
+    <section id="leadership">
+        <div class="container">
+            <h2>Leadership & Service</h2>
+            <div class="leadership-grid">
+                <div class="leadership-card">
+                    <h3>Berakah Campus Ministries</h3>
+                    <div class="position">Vice President</div>
+                    <p>Led Friday campus outreach initiatives, bringing together students for fellowship and spiritual growth. Organized homeless outreach programs twice yearly.</p>
+                </div>
+                <div class="leadership-card">
+                    <h3>Cyber Security Club</h3>
+                    <div class="position">Communications Director</div>
+                    <p>Managed club communications and event planning, supporting 300+ students in cybersecurity education and awareness initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="cert-list">
+                <div class="cert-item">
+                    <div class="cert-icon">🏆</div>
+                    <div class="cert-info">
+                        <h4>Microsoft Certified: Power BI Data Analyst Associate</h4>
+                        <p>Microsoft</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <p>I'm currently seeking opportunities in data analytics and data engineering. Let's connect and discuss how I can contribute to your team!</p>
+                <div class="contact-links">
+                    <a href="mailto:tekiprakash1@gmail.com">📧 Email</a>
+                    <a href="https://www.linkedin.com/in/tekip" target="_blank">💼 LinkedIn</a>
+                    <a href="https://github.com/PRAKASH3S" target="_blank">💻 GitHub</a>
+                    <a href="tel:+14697390718">📱 (469) 739-0718</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Prakash Teki | Built with passion for data and purpose</p>
+    </footer>
 </body>
 </html>
